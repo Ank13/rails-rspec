@@ -1,8 +1,6 @@
 class Admin::PostsController < ApplicationController
 
-  # http_basic_authenticate_with user: "geek", pw: "jock", only: :index
   http_basic_authenticate_with name: "geek", password: "jock", only: :index
-
 
   def index
       @posts = Post.all
@@ -41,10 +39,9 @@ class Admin::PostsController < ApplicationController
     end
   end
 
-  def destroy
-    post = Post.find(params[:destroy])
+  def destroy 
+    post = Post.find(params[:id])
     post.destroy
-
     redirect_to admin_posts_url
   end
 end

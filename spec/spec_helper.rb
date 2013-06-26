@@ -37,4 +37,10 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
 end
+
+  def authenticate
+    encoded_login = ["geek:jock"].pack("m*")
+    page.driver.header 'Authorization', "Basic #{encoded_login}"
+  end
